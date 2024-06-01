@@ -1,0 +1,5 @@
+link: https://project1-5c49e-default-rtdb.firebaseio.com/
+API key: AIzaSyCFTnDCzLAB_DtIPlaY3KQDraLnmFY6HGU
+
+email: project.firebase989@gmail.com
+password: !12345678#
