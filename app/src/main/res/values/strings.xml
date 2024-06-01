@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AutiGuard</string>
+    <string name="label_dbm">Loudness</string>
+    <string name="now_location">Lokasi Sekarang</string>
+    <string name="error_msg">Error Data Fetching</string>
+    <string name="db">dB</string>
+    <string name="failed_to_read_value">Failed to Read Value</string>
+    <string name="out_range">Di Luar Radius</string>
+    <string name="notification_granted">Izin Notifikasi Diberikan</string>
+    <string name="notification_ungranted">Izin Notifikasi Tidak Diberikan</string>
+    <string name="loudness_notification">Loudness > 59</string>
+</resources>
