@@ -24,6 +24,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     private lateinit var mMaps:GoogleMap
 
+    private var currentCircle: Circle? = null
     private val database: FirebaseDatabase by lazy { FirebaseDatabase.getInstance() }
     private val notificationSetup by lazy { NotificationSetup(this) }
     private var centerLocation: LatLng? = null
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment?.getMapAsync(this@MainActivity)
         }
 
-        //notificationSetup = NotificationSetup(this)
+
 
         displayData()
         checkLocationServices()
@@ -115,7 +117,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val radius = snapshot.getValue().toString().toDouble()
                 centerLocation?.let {
-                    mMaps.addCircle(CircleOptions().center(location).radius(radius)
+                    currentCircle?.remove()
+                    currentCircle = mMaps.addCircle(CircleOptions().center(location).radius(radius)
                     .strokeColor(Color.RED).strokeWidth(5f)
                     .fillColor(Color.argb(50, 255, 0, 0)))
                 }
@@ -144,7 +147,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 val range = snapshot.getValue().toString().toDouble()
                 centerLocation?.let {
 
-                    // Calculate the distance
+
+                    // Menghitung jarak
                     val distance = FloatArray(1)
                     Location.distanceBetween(lat, lng, it.latitude, it.longitude, distance)
                     if (distance[0] > range) {
