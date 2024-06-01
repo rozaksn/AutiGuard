@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         ActivityMainBinding.inflate(layoutInflater)
     }
     private lateinit var mMaps:GoogleMap
-    //private lateinit var notificationSetup: NotificationSetup
+
     private val database: FirebaseDatabase by lazy { FirebaseDatabase.getInstance() }
     private val notificationSetup by lazy { NotificationSetup(this) }
     private var centerLocation: LatLng? = null
