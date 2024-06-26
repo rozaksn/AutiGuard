@@ -171,10 +171,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         val dataRef=database.getReference("Sensor/Loudness")
         dataRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                val dbmData = snapshot.getValue().toString()
+                val dbmData = snapshot.getValue().toString().toInt()
                 dbmData?.let {data->
                     binding.tvdbm.text= "$dbmData dB"
-                    if (data > "59"){
+                    if (data > 59){
                         binding.tvdbm.setTextColor(getColor(R.color.red))
                         notificationSetup.sendLoudnessNotification()
                     }else{
