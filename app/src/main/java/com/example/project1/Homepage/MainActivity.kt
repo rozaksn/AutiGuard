@@ -175,8 +175,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 val maxData = snapshot.child("MaxLoudness").value.toString().toInt()
 
                 dbmData?.let {data->
-                    binding.tvdbm.text= "$dbmData dB"
-                    if (data > maxData){
+                    binding.tvdbm.text= "$dbmData dB"//Menampilkan data dari firebase
+                    if (data > maxData){//jika data lebih besar dari data maksimal maka akan mengirim notif
                         binding.tvdbm.setTextColor(getColor(R.color.red))
                         notificationSetup.sendLoudnessNotification()
                     }else{
