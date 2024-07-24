@@ -13,9 +13,9 @@ import com.example.project1.Homepage.MainActivity
 import com.example.project1.R
 
 class NotificationSetup(context:Context) {
-    private var CHANNEL_ID = "channel_id"
+    private var CHANNEL_ID = "channel_id_range"
     private val ctx = context
-    val ringtone =RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+    val ringtone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
     fun sendRangeNotification(){
         val intent = Intent(ctx,MainActivity::class.java)
@@ -24,7 +24,7 @@ class NotificationSetup(context:Context) {
         val notifyManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notification = NotificationCompat.Builder(ctx,CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_circle_notifications)
-            .setVibrate(longArrayOf(1000))
+            .setVibrate(longArrayOf(1000,1000,1000))
             .setSound(ringtone)
             .setContentText(ctx.getString(R.string.out_range))
             .setAutoCancel(true)
@@ -34,10 +34,10 @@ class NotificationSetup(context:Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val notificationChannel = NotificationChannel(
                 CHANNEL_ID,"out_range_notification",
-                NotificationManager.IMPORTANCE_DEFAULT
+                NotificationManager.IMPORTANCE_HIGH
             )
             notificationChannel.enableVibration(true)
-            notificationChannel.vibrationPattern = longArrayOf(1000)
+            notificationChannel.vibrationPattern = longArrayOf(1000,1000,1000)
 
             notification.setChannelId(CHANNEL_ID)
             notifyManager.createNotificationChannel(notificationChannel)
@@ -55,7 +55,7 @@ class NotificationSetup(context:Context) {
         val notifyManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notification = NotificationCompat.Builder(ctx,CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_circle_notifications_red)
-            .setVibrate(longArrayOf(1000))
+            .setVibrate(longArrayOf(1000,1000,1000))
             .setSound(ringtone)
             .setContentText(ctx.getString(R.string.loudness_notification))
             .setAutoCancel(true)
@@ -65,10 +65,10 @@ class NotificationSetup(context:Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val notificationChannel = NotificationChannel(
                 CHANNEL_ID,"loudness_notification",
-                NotificationManager.IMPORTANCE_DEFAULT
+                NotificationManager.IMPORTANCE_HIGH
             )
             notificationChannel.enableVibration(true)
-            notificationChannel.vibrationPattern = longArrayOf(1000)
+            notificationChannel.vibrationPattern = longArrayOf(1000,1000,1000)
 
             notification.setChannelId(CHANNEL_ID)
             notifyManager.createNotificationChannel(notificationChannel)
