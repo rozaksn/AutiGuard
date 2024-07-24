@@ -8,5 +8,5 @@
     <string name="out_range">Di Luar Radius</string>
     <string name="notification_granted">Izin Notifikasi Diberikan</string>
     <string name="notification_ungranted">Izin Notifikasi Tidak Diberikan</string>
-    <string name="loudness_notification">Loudness > 59</string>
+    <string name="loudness_notification">Lingkungan terlalu berisik</string>
 </resources>

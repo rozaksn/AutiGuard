@@ -56,14 +56,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment?.getMapAsync(this@MainActivity)
         }
 
-
-
         displayData()
         checkLocationServices()
         checkBatteryOptimizationPermission()
         checkNotificationPermission()
-
-
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -141,6 +137,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
            .title(getString(R.string.now_location))
            .snippet(location.toString()))
         mMaps.moveCamera(CameraUpdateFactory.newLatLngZoom(location,17f))
+
         val radiusRef = database.getReference("Sensor/MaxRange")
         radiusRef.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
